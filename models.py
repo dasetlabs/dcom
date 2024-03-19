@@ -94,7 +94,7 @@ class DCoMModel:
         if checkpoint:
             self.model.load_weights(checkpoint)
             try:
-                self.epoch = int(checkpoint.split("/")[-1].replace(".h5", ""))
+                self.epoch = int(checkpoint.split("/")[-1].replace(".weights.h5", ""))
             except:
                 pass
 
@@ -148,7 +148,7 @@ class DCoMModel:
         logger.info("Compiling Model")
         self.model.compile(optimizer=optimizer, loss=loss, metrics=[metric])
 
-        checkpoint = C.ModelCheckpoint(os.path.join(model_save_dir, "{epoch}.h5"), save_weights_only=True)
+        checkpoint = C.ModelCheckpoint(os.path.join(model_save_dir, "{epoch}.weights.h5"), save_weights_only=True)
         logs = C.CSVLogger(os.path.join(model_save_dir, "logs.csv"))
         reduce_lr = C.ReduceLROnPlateau(factor=0.5, monitor="test_avg_f1", patience=2)
         avg_f1 = AverageF1(valid, 10, batch_size, self.padding_len, "valid", self.aux_features, self.label_to_idx,

@@ -11,7 +11,7 @@ VALID_CSV_PATH = "./data/valid.csv"
 TEST_CSV_PATH = "./data/test.csv"
 
 MODEL_SAVE_DIR = "./checkpoint"
-INITIAL_MODEL_WEIGHT_PATH = "./checkpoint/1.h5"
+INITIAL_MODEL_WEIGHT_PATH = "./checkpoint/1.weights.h5"
 INITIAL_METADATA_PATH = "./checkpoint/metadata.pkl"
 
 TEST_SAMPLES_PER_INSTANCE = 2
