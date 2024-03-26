@@ -109,7 +109,7 @@ class DCoMModel:
             self.mean_cont_vars = metadata["mean_cont_vars"]
             self.std_cont_vars = metadata["std_cont_vars"]
 
-    def fit(self, train, valid, batch_size, optimizer, model_save_dir, init_checkpoint_path, init_metadata_path):
+    def fit(self, train, valid, batch_size, optimizer, model_save_dir, epochs, init_checkpoint_path, init_metadata_path):
 
         logger.info("Cleaning Data")
         train = clean_data(train)
@@ -171,7 +171,7 @@ class DCoMModel:
             pickle.dump(metadata, m)
 
         logger.info("Training Started")
-        self.model.fit(train_gen, epochs=1000, callbacks=[avg_f1, checkpoint, logs, reduce_lr],
+        self.model.fit(train_gen, epochs=epochs, callbacks=[avg_f1, checkpoint, logs, reduce_lr],
                        initial_epoch=self.epoch)
 
     def predict(self, test, batch_size, samples_per_instance):

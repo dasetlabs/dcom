@@ -13,6 +13,7 @@ TEST_CSV_PATH = "./data/test.csv"
 MODEL_SAVE_DIR = "./checkpoint"
 INITIAL_MODEL_WEIGHT_PATH = "./checkpoint/1.weights.h5"
 INITIAL_METADATA_PATH = "./checkpoint/metadata.pkl"
+TRAINING_EPOCHS=1000
 
 TEST_SAMPLES_PER_INSTANCE = 2
 
