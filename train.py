@@ -10,7 +10,9 @@ def train():
     train["values"] = train["values"].apply(lambda x: literal_eval(x))
     valid = pd.read_csv(VALID_CSV_PATH)
     valid["values"] = valid["values"].apply(lambda x: literal_eval(x))
-    model.fit(train, valid, BATCH_SIZE, OPTIMIZER, MODEL_SAVE_DIR, INITIAL_MODEL_WEIGHT_PATH, INITIAL_METADATA_PATH)
+    initial_metadata_path = INITIAL_METADATA_PATH if pathlib.Path(INITIAL_METADATA_PATH).exists() else None
+    initial_model_weight_path = INITIAL_MODEL_WEIGHT_PATH if pathlib.Path(INITIAL_MODEL_WEIGHT_PATH).exists() else None
+    model.fit(train, valid, BATCH_SIZE, OPTIMIZER, MODEL_SAVE_DIR, initial_model_weight_path, initial_metadata_path)
 
 
 
